@@ -6,10 +6,13 @@ import 'package:provider/provider.dart';
 import '../modals/http_exception.dart';
 import '../providers/auth.dart';
 
+// ignore: constant_identifier_names
 enum AuthMode { Signup, Login }
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';
+
+  const AuthScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                   Flexible(
                     flex: deviceSize.width > 600 ? 2 : 1,
-                    child: AuthCard(),
+                    child: const AuthCard(),
                   ),
                 ],
               ),
@@ -141,7 +144,7 @@ class _AuthCardState extends State<AuthCard>
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    super.dispose();
 
     _controller.dispose();
   }
@@ -276,7 +279,7 @@ class _AuthCardState extends State<AuthCard>
                   },
                 ),
                 AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   constraints: BoxConstraints(
                     minHeight: _authMode == AuthMode.Signup ? 60 : 0,
                     maxHeight: _authMode == AuthMode.Signup ? 120 : 0,

@@ -42,7 +42,6 @@ class Products with ChangeNotifier {
     // ),
   ];
 
-  final _showFav = false;
   final String authToken;
   final String userId;
 
@@ -101,7 +100,6 @@ class Products with ChangeNotifier {
       _items = loadedProducts;
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

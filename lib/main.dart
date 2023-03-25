@@ -15,9 +15,11 @@ import './providers/products.dart';
 import './screens/auth_screen.dart';
 import './providers/auth.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -53,20 +55,21 @@ class MyApp extends StatelessWidget {
                 .copyWith(secondary: Colors.deepOrange),
           ),
           home: auth.isAuth
-              ? ProductsOverviewScreen()
+              ? const ProductsOverviewScreen()
               : FutureBuilder(
                   future: auth.tryAutoLogin(),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.waiting
-                          ? SplashScreen()
-                          : AuthScreen(),
+                          ? const SplashScreen()
+                          : const AuthScreen(),
                 ),
           routes: {
-            ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
-            CartScreen.routeName: (context) => CartScreen(),
-            OrdersScreen.routeName: (context) => OrdersScreen(),
-            UserProductScreen.routeName: (context) => UserProductScreen(),
-            EditProductScreen.routeName: (context) => EditProductScreen(),
+            ProductDetailScreen.routeName: (context) =>
+                const ProductDetailScreen(),
+            CartScreen.routeName: (context) => const CartScreen(),
+            OrdersScreen.routeName: (context) => const OrdersScreen(),
+            UserProductScreen.routeName: (context) => const UserProductScreen(),
+            EditProductScreen.routeName: (context) => const EditProductScreen(),
           },
         ),
       ),
